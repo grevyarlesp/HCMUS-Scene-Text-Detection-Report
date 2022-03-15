@@ -1,0 +1,97 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Scene Text Detection and Recognition}
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Tran Kien Quoc - 19127535}
+    \IEEEauthorblockA{\textit{Ho Chi Minh University of Science}}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Pham Duc Duy - 19127379}
+\IEEEauthorblockA{Ho Chi Minh University of Science}}
+
+\maketitle
+
+\begin{abstract}
+Scene text recognition has many applications in many fields. This paper explores some solutions for the problem.
+\end{abstract}
+
+\begin{IEEEkeywords}
+scene text, detection, recognition
+% component, formatting, style, styling, insert
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+\subsection{Motivation}
+
+Text is a system of symbols used to record, communicate, of inherit culture, and is the most important carrier of information in the human world. As one of the most influential inventions of humanity, text has played an important role in human life.
+
+The rich and precise semantic information carried by text is important in a wide range of vision-based application:
+
+\begin{itemize}
+    \item Image search
+    \item Traffic automation
+    \item Industrial automation
+    \item Instant translation
+\end{itemize}
+
+In the past few years, scene text understanding has received rapid growing due to a large amount of everyday scene images that contain texts. Therefore, scene text detection is attracting increasing attention in the computer vision community. Many work has been made and the performance is increase every year with the rapid improvement of some popular method like deep learning, segmentation, classification.
+
+\subsection{Challenges}
+
+Recognizing text in natural scenes, also known as scene text recognition (STR), is usually considered as a special form of optical character recognition (OCR). In contrast to OCR in documents, STR remains challenging because of many factors, such as:
+
+\begin{itemize}
+    \item Background: text in natural scenes can appear on anything. Therefore, the text can appear on some complex background making it hard to recognize due to the texture of the background (backgrounds with patterns or objects with a shape that is extremely similar to any text).
+    \item Form: text appears in multiple colors with irregular fonts, different sizes, and diverse orientations. The diversity of text makes STR more difficult and challenging than OCR in scanned documents which has regular font, consistent size, and uniform arrangement.
+    \item Noise: non-uniform illumination, low resolution, and motion blurring of the input image may cause failure to STR.
+    \item Accessibility: scene text is captured randomly, various shape of text cause by perspective, languages…  increase the difficulty of recognizing characters and predicting text strings.
+\end{itemize}
+
+\subsection{Problem statements}
+
+Given an image with natural background, we have to detect the text deppicted in the image and convert into digital formats.
+
+\begin{itemize}
+    \item Input: An image, grayscale or RGB.
+    \item Output: 
+        \begin{itemize}
+            \item Detection: Detected text regions, with each characters enclosed in bouding boxes.
+            \item Recognition: Detected characters are regconized and converted into digital formats, easier for computers to process.
+        \end{itemize}
+\end{itemize}
+
+\section{Related works}
+
+\textbf{Traditional methods.} In this context, "traditional methods" refer to methods that don't rely on deep learning. Traditional methods often regard text detection and recognition as two separate tasks.
+
+\begin{itemize}
+    \item \cite{Neumann_Matas_2011} first proposed a Maximally Stable Extremal Regions \cite{Matas_Chum_Urban_Pajdla} based method. This involves no training from real world data, and doesn't separate the task of text recognition from text localizaiton, or an end-to-end method.
+    \item \cite{Yin_Yin_Huang_Hao_2014} proposed a MSER-based method, a method for blob analysis. Character candidates are extracted using MSER, close characters are grouped together with a metric learning algorithm. Then a classifer is used to eliminate blobs with high probability of non-text. Finally text candidates are converted into true text by a text classifier.
+    \item \cite{Kang_Li_Doermann_2014}  utilizes Higher order correlation clustering \cite{Kim_Nowozin_Kohli_Yoo} after a MSER graph is built.
+    \item \cite{Li_Jia_Shen_Hengel_2013} proposed edge-preserving  MSER (eMSER), and 3 novel cues: Stroke Width, Percetual Divergence, Histogram of Gradients of Edges. Proposed a Bayesian method to integrate these 3 cues. Developed a random Markov field to exploit the inherent dependencies between characters.
+    
+\end{itemize}
+
+\textbf{Deep learning-based methods.} 
+
+\begin{itemize}
+    \item EAST \cite{Zhou_Yao_Wen_Wang_Zhou_He_Liang_2017} is a pipeline consisting of  feature extraction using PVANet \cite{Kim_Hong_Roh_Cheon_Park_2016} to extract the features of the image, image segmentation using a Fully Convolutional Network \cite{Long_Shelhamer_Darrell_2015} for text segmentation. The post processing steps involve NMS to merge the results.
+
+\end{itemize}
+
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+\end{document}
